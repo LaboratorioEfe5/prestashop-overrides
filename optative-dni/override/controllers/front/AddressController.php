@@ -46,7 +46,9 @@ class AddressController extends AddressControllerCore
 
 			// Check country DNI
 			if (!Validate::isDniLite(Tools::getValue('dni')))
+			//--> mod: dni no obligatorio
 			if ((Tools::getValue('dni')!=='')&&(!Validate::isDniLite(Tools::getValue('dni'))))				
+			//--> fin mod: dni no obligatorio
 				$this->errors[] = Tools::displayError('The identification number is incorrect or has already been used.');
 			else if (!$country->isNeedDni())
 				$address->dni = null;

@@ -153,8 +153,9 @@ class AuthController extends AuthControllerCore
 					$this->errors[] = Tools::displayError('A Zip / Postal code is required.');
 				elseif ($postcode && !Validate::isPostCode($postcode))
 					$this->errors[] = Tools::displayError('The Zip / Postal code is invalid.');
-	
+				//--> mod: dni no obligatorio
 				if ((Tools::getValue('dni')!=='')&&(!Validate::isDniLite(Tools::getValue('dni'))))
+				//--> fin mod: dni no obligatorio
 					$this->errors[] = Tools::displayError('The identification number is incorrect or has already been used.');
 				elseif (!$country->need_identification_number)
 					$$addresses_type->dni = null;
